@@ -8,7 +8,7 @@ public class FetchFromHS : MonoBehaviour
 {
     public bool fethced = false;
     public int confirmedCases = 0;
-    public int deaths = 0;
+    public int deathCases = 0;
     public int recoveries = 0;
 
     public string jsonToUse;
@@ -31,7 +31,7 @@ public class FetchFromHS : MonoBehaviour
             RootObject root = JsonUtility.FromJson<RootObject>(jsonToUse);
             Debug.Log(root);
             confirmedCases = root.confirmed.Length;
-            deaths = root.deaths;
+            deathCases = root.deaths.Length;
             recoveries = root.recovered.Length;
             fethced = true;
         }
@@ -51,13 +51,19 @@ public class FetchFromHS : MonoBehaviour
         public int id;
         public string date = null;
         public string healthCareDistrict = null;
-
+    }
+    [System.Serializable]
+    public class DeathCase
+    {
+        public int id;
+        public string date = null;
+        public string healthCareDistrict = null;
     }
     [System.Serializable]
     public class RootObject
     {
         public ConfirmedCase[] confirmed;
-        public int deaths;
+        public DeathCase[] deaths;
         public RecoveredCase[] recovered;
     }
 }

@@ -28,7 +28,7 @@ public class PieChartManager : MonoBehaviour
     public void MakeGraph()
     {
         values[0] = fetchFromHS.confirmedCases;
-        values[1] = fetchFromHS.deaths;
+        values[1] = fetchFromHS.deathCases;
         values[2] = fetchFromHS.recoveries;
         for (int i = 0; i < 3; i++)
         {
